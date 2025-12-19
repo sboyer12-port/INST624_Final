@@ -5,7 +5,15 @@ import sys
 import matplotlib.pyplot as plt
 from Analyzer import StockAnalyzer
 
-API_KEY = "ASW4FSIWUW4Z009O" # this is my api key
+import os # adding these to hide my API key
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
+
+if not API_KEY:
+    raise ValueError("API key not found. Check .env file")
 
 if len(sys.argv) < 2:
     print("You forgot to add a stock symbol. Make sure to do that and try again.") # this code is just in case there isn't a stock symbol added.
