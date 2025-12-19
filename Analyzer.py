@@ -9,3 +9,10 @@ class StockAnalyzer:
         self.apikey = apikey
         self.data = None # null value for data
         
+    def pulldata(self):
+        url = "https://www.alphavantage.co/query" # this is the url we need to run our query. This is what will be ran through the terminal
+        paramaters = {
+            "function": "TIME_SERIES_DAILY", # this is the function that we are returning from alpha vantage
+            "symbol": self.symbol,
+            "apikey": self.apikey
+        }
