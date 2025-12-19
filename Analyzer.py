@@ -20,6 +20,12 @@ class StockAnalyzer:
         response = requests.get(url, params=params) # arguably the most important line in the program. This is sending our GET request to the API
         json_data = response.json() # this turns the response into a json response
 
+        if "Time Series (Daily)" not in json_data:
+            raise ValueError(
+                f"API response error: {json_data}"
+            )
+
+
         self.data = json_data["Time Series (Daily)"] # this is very important because it takes the daily stock price (I struggled with this too because I had to search to find the correct thing to write specifically for this variable)
 
 
